@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* For all iOS devices, make scrolling feel native */
+@supports (-webkit-touch-callout: none) {
+  .mobile-container {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Hide scrollbars on Chrome, Safari and Opera */
+.mobile-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbars for IE, Edge and Firefox */
+.mobile-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for desktop screens */
+.desktop-container::-webkit-scrollbar {
+  display: none;
+}
+
+.desktop-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@layer components {
+  .mobile-container {
+    @apply w-full h-screen bg-white overflow-y-auto relative md:hidden;
+  }
+  
+  .desktop-container {
+    @apply hidden md:block w-full h-full bg-white overflow-y-auto;
+  }
+  
+  .app-container {
+    @apply h-screen w-full;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-400 text-white py-2 px-4 rounded-lg font-medium hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-opacity-50 transition duration-300;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 text-gray-700 py-2 px-4 rounded-lg font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-300;
+  }
+  
+  .nav-dock {
+    @apply fixed bottom-0 left-0 w-full py-3 px-6 bg-white shadow-nav flex justify-between items-center z-50;
+  }
+  
+  .nav-item {
+    @apply flex flex-col items-center text-xs text-gray-500;
+  }
+  
+  .nav-item.active {
+    @apply text-primary-400;
+  }
+}
